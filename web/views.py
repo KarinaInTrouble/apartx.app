@@ -12,7 +12,9 @@ def create_order(request):
             order = form.save(commit=False)
             order.user = request.user
             order.save()
-            return redirect('orders')
+            print('Order created successfully')  # Отладочный вывод
+        else:
+            print(form.errors)  # Отладочный вывод
     else:
         form = OrdersForm()
     return render(request, 'create_order.html', {'form': form})

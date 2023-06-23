@@ -23,7 +23,7 @@ import api.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('apis/v1/', include(api.urls)),
-    path('orders', create_order, name="orders"),
+    path('orders/', create_order, name="orders"),
     path('', index, name = "index")
 ]
 

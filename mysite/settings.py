@@ -82,7 +82,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
+CSRF_TRUSTED_ORIGINS = ['https://django-server-production-4493.up.railway.app/']
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

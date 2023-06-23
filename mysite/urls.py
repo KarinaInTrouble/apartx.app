@@ -23,7 +23,8 @@ import api.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('apis/v1/', include(api.urls)),
-    path('', index, name = "index"),
+    path('orders', create_order, name="orders"),
+    path('', index, name = "index")
 ]
 
 if settings.DEBUG:

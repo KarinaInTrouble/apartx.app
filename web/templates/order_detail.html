@@ -1,0 +1,26 @@
+<h1>Детали заказа</h1>
+
+<p>Описание заказа: {{ order.order }}</p>
+<p>Цена заказа: {{ order.price }}</p>
+<p>Чек-лист: {{ order.description }}</p>
+<p>Дата: {{ order.date }}</p>
+<p>Адрес: {{ order.address }}</p>
+
+<form method="POST" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Откликнуться</button>
+</form>
+<hr>
+<h2>Отклики</h2>
+{% for response in responses %}
+  <div>
+    <p>Исполнитель: {{ response.user.username }}</p>
+    <p>Сообщение: {{ response.message }}</p>
+    {% if response.is_accepted %}
+      <p>Статус: Принят</p>
+    {% else %}
+      <p>Статус: Отклонен</p>
+    {% endif %}
+  </div>
+{% endfor %}

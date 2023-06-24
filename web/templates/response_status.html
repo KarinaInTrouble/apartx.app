@@ -1,0 +1,12 @@
+<h1>Статус отклика</h1>
+
+<form method="POST" action="">
+  {% csrf_token %}
+  <label>
+    <input type="radio" name="status" value="accept"> Принять
+  </label>
+  <label>
+    <input type="radio" name="status" value="reject"> Отклонить
+  </label>
+  <button type="submit">Сохранить</button>
+</form>

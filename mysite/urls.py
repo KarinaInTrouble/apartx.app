@@ -23,7 +23,9 @@ import api.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('apis/v1/', include(api.urls)),
-    path('orders/', create_order, name="orders"),
+    path('orders/', orders, name="order_list"),
+    path('orders/<int:order_id>/', order_detail, name='order_detail'),
+    path('orders/<int:order_id>/responses/<int:response_id>/', response_status, name='response_status'),
     path('', index, name = "index")
 ]
 

@@ -1,0 +1,11 @@
+<h1>Список заказов</h1>
+
+<ul>
+  {% for order in query %}
+    <li>
+      <a href="{% url 'order_detail' order.id %}">{{ order.order }}</a>
+    </li>
+  {% empty %}
+    <li>Нет доступных заказов.</li>
+  {% endfor %}
+</ul>

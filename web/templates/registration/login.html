@@ -1,3 +1,95 @@
-{% block content %}
-Hello, {{user.get_username}}
-{% endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    {% load crispy_forms_tags %} 
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">ApartX</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Назад</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      
+      <div class="container my-5">
+
+        {% if form.errors %}
+        <div class="alert alert-danger rounded-3 text-danger">
+          Имя пользователя или пароль не совпадают, попробуйте снова
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-center">
+          <!-- Registration Form -->
+          <div class="col-md-6">
+            <h2 class="text-center mb-4">Авторизация </h2>
+            <!--
+            <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+
+              <div class="mb-3">
+
+                <table>
+              
+                    <tr>
+                      <td>{{ form.username.label_tag }}</td>
+                      <td>{{ form.username }}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>{{ form.password.label_tag }}</td>
+                      <td>{{ form.password }}</td>
+                    </tr>
+                </table>
+
+              
+              <input type="submit" class="btn btn-primary" value="Войти">
+              <input type="hidden" name="next" value="{{ next }}" />
+              </form>-->
+              <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="id_username">Email</label>
+                  <input type="text" name="username" id="id_username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="id_password">Пароль</label>
+                  <input type="password" name="password" id="id_password" class="form-control" required>
+                </div>
+                <br>
+                <input type="submit" class="btn btn-primary" value="Войти">
+                <input type="hidden" name="next" value="{{ next }}" />
+              </form>
+
+              <br>
+              {# Assumes you setup the password_reset view in your URLconf #}
+              <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+
+          </div>
+    
+    </div>
+    </div>
+      
+</body>
+</html>

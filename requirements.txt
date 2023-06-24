@@ -6,3 +6,5 @@ sqlparse==0.4.2
 whitenoise==6.2.0
 djangorestframework==3.14.0
 Pillow==9.5.0
+crispy-bootstrap4==2022.1
+django-crispy-forms==2.0

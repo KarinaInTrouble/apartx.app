@@ -8,7 +8,10 @@ class OrderSerializer(serializers.ModelSerializer):
             'order',
             'price',
             'description',
+            'date',
             'address',
-            'route'
+            'route_link',
+            'route',
+            'contract'
         )
         model = models.Orders

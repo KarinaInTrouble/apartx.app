@@ -1,6 +1,14 @@
 from rest_framework  import serializers
 from web import models
 
+class ProfessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'name',
+        )
+        model = models.Profession
+
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (

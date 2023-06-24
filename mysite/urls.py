@@ -19,14 +19,36 @@ from web.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 import api.urls
+from api.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('apis/v1/', include(api.urls)),
+    path('apis/profession/', include([
+        path('', ProfessionList.as_view()),
+        path('<int:pk>/', DetailProfession.as_view()),
+    ])),
+    path('apis/orders/', include([
+        path('', OrdersList.as_view()),
+        path('<int:pk>/', DetailOrder.as_view()),
+    ])),
+    path('apis/profiles/', include([
+        path('', ProfileList.as_view()),
+        path('<int:pk>/', DetailProfile.as_view()),
+    ])),
+    path('apis/feedbacks/', include([
+        path('', FeedbackList.as_view()),
+        path('<int:pk>/', DetailFeedback.as_view()),
+    ])),
+    path('apis/completedorder/', include([
+        path('', CompletedOrderList.as_view()),
+        path('<int:pk>/', DetailCompletedOrder.as_view()),
+    ])),
+
     path('orders/', orders, name="order_list"),
     path('orders/<int:order_id>/', order_detail, name='order_detail'),
     path('orders/<int:order_id>/responses/<int:response_id>/', response_status, name='response_status'),
-    path('', index, name = "index")
+    path('', index, name = "index"),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
